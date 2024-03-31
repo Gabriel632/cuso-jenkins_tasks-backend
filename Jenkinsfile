@@ -49,5 +49,14 @@ pipeline {
                 }                               
             }
         }
+        stage ('Deploy Frontend') {
+            steps {  
+                dir('frontend') {
+                    git credentialsId: 'github_login', url: 'https://github.com/Gabriel632/curso-jenkins_tasks-frontend'
+                    bat '"C:\\Repositorio\\apache-maven-3.9.4\\bin\\mvn.cmd" clean package'
+                    deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001')], contextPath: 'tasks', war: 'target/tasks.war'
+                }                                        
+            }
+        }
     }
 }
