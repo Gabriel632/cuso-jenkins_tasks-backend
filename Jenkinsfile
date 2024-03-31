@@ -43,8 +43,10 @@ pipeline {
         }
         stage ('API Test') {
             steps {  
-                git credentialsId: 'github_login', url: 'https://github.com/Gabriel632/curso-jenkins_tests-api-tasks'     
-                bat '"C:\\Repositorio\\apache-maven-3.9.4\\bin\\mvn.cmd" test'                  
+                dir('api-test') {
+                    git credentialsId: 'github_login', url: 'https://github.com/Gabriel632/curso-jenkins_tests-api-tasks'     
+                    bat '"C:\\Repositorio\\apache-maven-3.9.4\\bin\\mvn.cmd" test'   
+                }                               
             }
         }
     }
