@@ -61,7 +61,7 @@ pipeline {
         stage ('Functional Test') {
             steps {  
                 dir('functional-test') {
-                    git credentialsId: 'github_login', url: 'https://github.com/Gabriel632/curso-jenkins_tests-functional-tasks'     
+                    git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/Gabriel632/curso-jenkins_tests-functional-tasks'     
                     bat '"C:\\Repositorio\\apache-maven-3.9.4\\bin\\mvn.cmd" test'   
                 }                               
             }
