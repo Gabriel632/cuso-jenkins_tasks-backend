@@ -25,5 +25,16 @@ pipeline {
             }
         }
         */
+        // não implementado por não conseguir rodar docker do sonar
+        /*
+        stage ('Quality Gate') {
+            steps {  
+                sleep(5) 
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true         
+                }                            
+            }
+        }
+        */
     }
 }
