@@ -72,5 +72,13 @@ pipeline {
                 bat 'docker-compose up -d'
             }
         }
+        stage ('Health Check') {
+            steps {  
+                sleep(5)
+                dir('functional-test') {                    
+                    bat '"C:\\Repositorio\\apache-maven-3.9.4\\bin\\mvn.cmd" verify -Dskip.surefire.tests'   
+                }                               
+            }
+        }
     }
 }
